@@ -2,7 +2,6 @@
   "name": "react-x",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -10,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@commitlint/cli": "^17.6.3",
     "commitlint": "^17.6.6",
     "commitlint-config-git-commit-emoji": "^1.0.0",
     "husky": "^8.0.3",
