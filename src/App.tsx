@@ -2,14 +2,16 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Layout from "./components/layout";
 import Home from "./routes/home";
 import Profile from "./routes/profile";
-import Login from "./routes/login";
-import CreateAccount from "./routes/create-account";
+import Login from "./routes/authentication/login";
+import CreateAccount from "./routes/authentication/create-account";
 import styled, { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import { useEffect, useState } from "react";
 import LoadingScreen from "./components/loading-screen";
 import { auth } from "./firebase";
 import ProtectedRoute from "./components/protected-route";
+import ResetPassword from "./routes/authentication/reset-password";
+import ResetPasswordDone from "./routes/authentication/reset-password-done";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
   {
     path: "/create-account",
     element: <CreateAccount />,
+  },
+  {
+    path: "/reset-password",
+    element: <ResetPassword />,
+  },
+  {
+    path: "/reset-password/done",
+    element: <ResetPasswordDone />,
   }
 ])
 
