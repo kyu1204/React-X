@@ -75,7 +75,7 @@ export default function PostTweetForm() {
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
     if (files && files.length === 1) {
-      if (files[0].size > 5 * MB) return alert("File size must be under 1MB");
+      if (files[0].size > 5 * MB) return alert("File size must be under 5MB");
       setFile(files[0]);
     }
   }
@@ -94,7 +94,7 @@ export default function PostTweetForm() {
       });
 
       if (file) {
-        const locationRef = ref(storage, `tweets/${user.uid}-${user.displayName}/${doc.id}`);
+        const locationRef = ref(storage, `tweets/${user.uid}/${doc.id}`);
         const result = await uploadBytes(locationRef, file);
         const url = await getDownloadURL(result.ref);
         await updateDoc(doc, {
