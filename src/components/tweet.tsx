@@ -116,11 +116,11 @@ export default function Tweet(tweet: ITweet) {
         <Payload>{tweet.tweet}</Payload>
       </Column>
       <Column>
-        <HamburgerButton onClick={() => setOpen(!open)}>
+        {user?.uid === tweet.userId ? <HamburgerButton onClick={() => setOpen(!open)}>
           <div />
           <div />
           <div />
-        </HamburgerButton>
+        </HamburgerButton> : null}
         {open && user?.uid === tweet.userId ? (
           <Menu>
             <MenuItem isColor="tomato" onClick={onDelete}>Delete</MenuItem>

@@ -17,7 +17,6 @@ const ModalBackground = styled.div`
 
 const Wrapper = styled.div`
   display: flex;
-  width: 500px;
   justify-content: center;
   align-items: center;
 `;

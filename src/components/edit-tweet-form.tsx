@@ -5,6 +5,16 @@ import { auth, db, storage } from "../firebase";
 import { deleteObject, getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { ITweet } from "./timeline";
 
+
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+  gap: 50px;
+  width: 40vw;
+  height: 50vh;
+`;
+
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -113,28 +123,30 @@ export default function EditTweetForm({ id, tweet }: ITweet) {
   }
 
   return (
-    <Form onSubmit={onSubmit}>
-      <TextArea
-        required
-        rows={5}
-        maxLength={180}
-        onChange={onChange}
-        value={tweet}
-        placeholder="What is happening?!"
-      />
-      <AttachFileButton htmlFor="file">
-        {file ? "Photo added ✅" : "Add photo"}
-      </AttachFileButton>
-      <AttachFileInput
-        onChange={onFileChange}
-        id="file"
-        accept="image/*"
-        type="file"
-      />
-      <SubmitButton
-        type="submit"
-        value={isLoading ? "Posting..." : "Post Tweet"}
-      />
-    </Form>
+    <Wrapper>
+      <Form onSubmit={onSubmit}>
+        <TextArea
+          required
+          rows={5}
+          maxLength={180}
+          onChange={onChange}
+          value={tweet}
+          placeholder="What is happening?!"
+        />
+        <AttachFileButton htmlFor="file">
+          {file ? "Photo added ✅" : "Add photo"}
+        </AttachFileButton>
+        <AttachFileInput
+          onChange={onFileChange}
+          id="file"
+          accept="image/*"
+          type="file"
+        />
+        <SubmitButton
+          type="submit"
+          value={isLoading ? "Posting..." : "Post Tweet"}
+        />
+      </Form>
+    </Wrapper>
   );
 }
